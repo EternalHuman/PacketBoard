@@ -9,7 +9,7 @@ version = '1.0.0-SNAPSHOT'
 description = 'Powerful feature-packed Minecraft scoreboard library'
 
 def adventureVersion = '4.16.0'
-def paperVersion = '1.20.1-R0.1-SNAPSHOT'
+def paperVersion = '1.19.1-R0.1-SNAPSHOT'
 def viaVersionVersion = '5.0.0'
 def viaNBTVersion = '5.0.2'
 def miniPlaceholdersVersion = '2.2.3'

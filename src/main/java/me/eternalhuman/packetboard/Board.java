@@ -82,11 +82,11 @@ public class Board<R, P> {
                 textProvider);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { //EXAMPLE
         //Test
 
         Board<Component, GamePlayer> board = Board.<Component, GamePlayer>builder()
-                .title(gamePlayer -> Component.text("Title")) //также оставить поддержку старого .title(Component.text("Title"))
+                .title(gamePlayer -> Component.text("Title"))
                 .plugin(null)
                 .textProvider(new AdventureTextProvider())
                 .build();
