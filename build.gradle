@@ -1,0 +1,76 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+group = 'me.eternalhuman'
+version = '1.0.0-SNAPSHOT'
+description = 'Powerful feature-packed Minecraft scoreboard library'
+
+def adventureVersion = '4.16.0'
+def paperVersion = '1.20.1-R0.1-SNAPSHOT'
+def viaVersionVersion = '5.0.0'
+def viaNBTVersion = '5.0.2'
+def miniPlaceholdersVersion = '2.2.3'
+def lombokVersion = '1.18.30'
+def foliaLibVersion = '0.5.1'
+
+allprojects {
+    apply plugin: 'java-library'
+
+    repositories {
+        mavenLocal()
+
+        maven { url 'https://repo.tcoded.com/releases' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo.papermc.io/repository/maven-public/' }
+        maven { url 'https://hub.spigotmc.org/nexus/content/groups/public/' }
+        maven { url 'https://repo.dmulloy2.net/content/groups/public/' }
+        maven { url 'https://oss.sonatype.org/content/groups/public/' }
+        maven { url 'https://repo.viaversion.com' }
+        maven { url 'https://repo.maven.apache.org/maven2/' }
+        maven { url 'https://repo.opencollab.dev/maven-releases/' }
+    }
+
+    dependencies {
+        testImplementation 'junit:junit:4.13.2'
+        testImplementation 'org.mockito:mockito-core:5.7.0'
+        testImplementation 'org.powermock:powermock-module-junit4:2.0.9'
+        testImplementation 'org.powermock:powermock-api-mockito2:2.0.9'
+
+        compileOnly "io.papermc.paper:paper-api:${paperVersion}"
+        testCompileOnly "io.papermc.paper:paper-api:${paperVersion}"
+
+        implementation "com.viaversion:nbt:${viaNBTVersion}"
+        implementation("com.tcoded:FoliaLib:${foliaLibVersion}")
+
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+        compileOnly "com.viaversion:viaversion-common:${viaVersionVersion}"
+        compileOnly "com.viaversion:viaversion-bukkit:${viaVersionVersion}"
+
+        compileOnly 'io.netty:netty-buffer:4.1.101.Final'
+        compileOnly 'io.netty:netty-handler:4.1.101.Final'
+
+        compileOnly "io.github.miniplaceholders:miniplaceholders-api:${miniPlaceholdersVersion}"
+
+        compileOnly "net.kyori:adventure-api:${adventureVersion}"
+        compileOnly "net.kyori:adventure-text-minimessage:${adventureVersion}"
+        compileOnly "net.kyori:adventure-text-serializer-gson:${adventureVersion}"
+        compileOnly "net.kyori:adventure-text-serializer-legacy:${adventureVersion}"
+    }
+}
+
+task javadocJar(type: Jar) {
+    archiveClassifier = 'javadoc'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}
