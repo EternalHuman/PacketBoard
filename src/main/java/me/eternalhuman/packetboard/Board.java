@@ -82,38 +82,6 @@ public class Board<R, P> {
                 textProvider);
     }
 
-    public static void main(String[] args) { //EXAMPLE
-        //Test
-
-        Board<Component, GamePlayer> board = Board.<Component, GamePlayer>builder()
-                .title(gamePlayer -> Component.text("Title"))
-                .plugin(null)
-                .textProvider(new AdventureTextProvider())
-                .build();
-
-        board.addUpdatableLine(gamePlayer -> {
-            return Component.text("Kills: " + gamePlayer.kills);
-        });
-
-        board.addUpdatableLine(gamePlayer -> {
-            return Component.text("Wins: " + gamePlayer.wins);
-        });
-
-    }
-
-    private static class GamePlayer {
-        private int kills, wins;
-        private Player bukkitPlayer;
-    }
-
-    private static class GamePlayerManager {
-        private static final Map<UUID, GamePlayer> gamePlayerMap = Map.of();
-
-        public static GamePlayer getGamePlayer(Player player) {
-            return gamePlayerMap.get(player.getUniqueId());
-        }
-    }
-
     public static <R, P> Builder<R, P> builder() {
         return new Builder<>();
     }
