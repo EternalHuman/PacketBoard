@@ -1,21 +1,21 @@
 # PacketBoard
 
-Современная библиотека для создания скорбордов в Minecraft через пакеты с поддержкой всех версий от 1.12.2 до 1.21.9.
+A modern library for creating scoreboards in Minecraft using packets with support for all versions from 1.12.2 to 1.21.9.
 
-## ✨ Преимущества
+## ✨ Advantages
 
-- **🔄 Полная совместимость версий** — работает на 1.12.2 - 1.21.9 без дополнительной настройки
-- **📦 Packet-based подход** — использует пакеты напрямую, без проблем с версиями
-- **☕ Java 17** — минимальные требования позволяют использовать библиотеку на любой версии сервера
-- **⚡ Поддержка Folia** — полная совместимость с многопоточным сервером
-- **🎨 Множество text providers** — MiniMessage, Adventure, BungeeCordChat, MiniPlaceholders
-- **✨ Встроенные анимации** — слайд-эффекты и кастомные анимации текста
-- **🎯 Типобезопасность** — Generic типы для работы с кастомными объектами игроков
-- **🔄 Динамическое обновление** — обновление линий по условиям и таймерам
-- **📄 Pager система** — автоматическое переключение между несколькими скорбордами
-- **🎮 Простой API** — интуитивно понятный fluent interface
+- **🔄 Full version compatibility** — works on 1.12.2 - 1.21.9 without additional configuration
+- **📦 Packet-based approach** — uses packets directly, without version compatibility issues
+- **☕ Java 17** — minimal requirements allow using the library on any server version
+- **⚡ Folia support** — full compatibility with multi-threaded server
+- **🎨 Multiple text providers** — MiniMessage, Adventure, BungeeCordChat, MiniPlaceholders
+- **✨ Built-in animations** — slide effects and custom text animations
+- **🎯 Type safety** — Generic types for working with custom player objects
+- **🔄 Dynamic updates** — line updates based on conditions and timers
+- **📄 Pager system** — automatic switching between multiple scoreboards
+- **🎮 Simple API** — intuitive fluent interface
 
-## 📦 Установка
+## 📦 Installation
 
 <details>
 <summary><b>Maven</b></summary>
@@ -77,17 +77,17 @@ dependencies {
 
 </details>
 
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
-### Базовый пример
+### Basic Example
 
 ```java
 Board<String, Player> board = PacketBoard.newMiniMessageSidebar(
-    "<gradient:#ff0000:#00ff00>Мой сервер</gradient>",
+    "<gradient:#ff0000:#00ff00>My Server</gradient>",
     plugin
 );
 
-board.addTextLine("<gold>Онлайн:");
+board.addTextLine("<gold>Online:");
 board.addUpdatableLine(player -> 
     "<white>" + Bukkit.getOnlinePlayers().size()
 );
@@ -95,13 +95,13 @@ board.addBlankLine();
 board.addTextLine("<gray>play.myserver.com");
 
 board.addViewer(player);
-board.updateLinesPeriodically(0, 20); // обновление каждую секунду
+board.updateLinesPeriodically(0, 20); // update every second
 ```
 
-## 📚 Примеры использования
+## 📚 Usage Examples
 
 <details>
-<summary><b>С кастомным объектом игрока</b></summary>
+<summary><b>With Custom Player Object</b></summary>
 
 ```java
 public class GamePlayer {
@@ -112,22 +112,22 @@ public class GamePlayer {
 }
 
 Board<Component, GamePlayer> board = Board.<Component, GamePlayer>builder()
-    .title(gamePlayer -> Component.text("Статистика"))
+    .title(gamePlayer -> Component.text("Statistics"))
     .plugin(plugin)
     .textProvider(new AdventureTextProvider())
     .playerFunction(player -> GamePlayerManager.get(player))
     .build();
 
 board.addUpdatableLine(gamePlayer -> 
-    Component.text("Убийств: " + gamePlayer.getKills())
+    Component.text("Kills: " + gamePlayer.getKills())
 );
 
 board.addUpdatableLine(gamePlayer -> 
-    Component.text("Побед: " + gamePlayer.getWins())
+    Component.text("Wins: " + gamePlayer.getWins())
 );
 
 board.addUpdatableLine(gamePlayer -> 
-    Component.text("Уровень: " + gamePlayer.getLevel())
+    Component.text("Level: " + gamePlayer.getLevel())
 );
 
 board.addViewer(player);
@@ -137,11 +137,11 @@ board.updateLinesPeriodically(0, 20);
 </details>
 
 <details>
-<summary><b>Анимированный заголовок</b></summary>
+<summary><b>Animated Title</b></summary>
 
 ```java
 TextIterator titleAnimation = new TextSlideAnimation(
-    "Добро пожаловать!",
+    "Welcome!",
     ChatColor.GOLD,
     TextSlideAnimation.SlideDirection.LEFT_TO_RIGHT,
     2
@@ -156,23 +156,23 @@ Board<String, Player> board = PacketBoard.newMiniMessageSidebar(
 </details>
 
 <details>
-<summary><b>Условные линии</b></summary>
+<summary><b>Conditional Lines</b></summary>
 
 ```java
-// Показывать линию только если у игрока есть права
+// Show line only if player has permission
 board.addConditionalLine(
-    player -> "<green>VIP Бонусы активны",
+    player -> "<green>VIP Bonuses Active",
     player -> player.hasPermission("server.vip")
 );
 
-// Показывать разные линии в зависимости от условий
+// Show different lines depending on conditions
 BoardLine<String, Player> line = board.addUpdatableLine(player -> {
     if (player.getWorld().getName().equals("world_nether")) {
-        return "<red>Вы в Аду!";
+        return "<red>You're in the Nether!";
     } else if (player.getWorld().getName().equals("world_the_end")) {
-        return "<light_purple>Вы в Крае!";
+        return "<light_purple>You're in the End!";
     } else {
-        return "<green>Обычный мир";
+        return "<green>Normal World";
     }
 });
 ```
@@ -180,65 +180,65 @@ BoardLine<String, Player> line = board.addUpdatableLine(player -> {
 </details>
 
 <details>
-<summary><b>Динамическое управление линиями</b></summary>
+<summary><b>Dynamic Line Management</b></summary>
 
 ```java
 Board<String, Player> board = PacketBoard.newMiniMessageSidebar(
-    "<gradient:#ff0000:#00ff00>PvP Арена</gradient>",
+    "<gradient:#ff0000:#00ff00>PvP Arena</gradient>",
     plugin
 );
 
 BoardLine<String, Player> killsLine = board.addUpdatableLine(player -> 
-    "<gold>Убийств: " + getKills(player)
+    "<gold>Kills: " + getKills(player)
 );
 
 BoardLine<String, Player> streakLine = board.addUpdatableLine(player -> 
-    "<yellow>Серия: " + getStreak(player)
+    "<yellow>Streak: " + getStreak(player)
 );
 
-// Удаление линии
+// Remove line
 board.removeLine(killsLine);
 
-// Обновление конкретной линии
+// Update specific line
 board.updateLine(streakLine);
 
-// Перемещение линии
-board.shiftLine(streakLine, 0); // переместить в начало
+// Move line
+board.shiftLine(streakLine, 0); // move to beginning
 ```
 
 </details>
 
 <details>
-<summary><b>SidebarPager - переключение скорбордов</b></summary>
+<summary><b>SidebarPager - Switching Scoreboards</b></summary>
 
 ```java
 Board<String, Player> infoBoard = PacketBoard.newMiniMessageSidebar(
-    "<aqua>Информация</aqua>",
+    "<aqua>Information</aqua>",
     plugin
 );
-infoBoard.addTextLine("<gold>Режим: SkyWars");
-infoBoard.addTextLine("<gray>Карта: Islands");
+infoBoard.addTextLine("<gold>Mode: SkyWars");
+infoBoard.addTextLine("<gray>Map: Islands");
 
 Board<String, Player> statsBoard = PacketBoard.newMiniMessageSidebar(
-    "<green>Статистика</green>",
+    "<green>Statistics</green>",
     plugin
 );
-statsBoard.addUpdatableLine(p -> "<white>Убийств: " + getKills(p));
-statsBoard.addUpdatableLine(p -> "<white>Смертей: " + getDeaths(p));
+statsBoard.addUpdatableLine(p -> "<white>Kills: " + getKills(p));
+statsBoard.addUpdatableLine(p -> "<white>Deaths: " + getDeaths(p));
 
-// Создание pager с автопереключением каждые 5 секунд (100 тиков)
+// Create pager with auto-switch every 5 seconds (100 ticks)
 SidebarPager<String, Player> pager = new SidebarPager<>(
     Arrays.asList(infoBoard, statsBoard),
-    100, // 5 секунд
+    100, // 5 seconds
     plugin
 );
 
-// Добавление индикатора страниц на все скорборды
+// Add page indicator to all scoreboards
 pager.addPageLine((page, maxPage, board) -> {
-    board.addTextLine("<gray>Страница " + page + "/" + maxPage);
+    board.addTextLine("<gray>Page " + page + "/" + maxPage);
 });
 
-// Применить настройку ко всем скорбордам
+// Apply setting to all scoreboards
 pager.applyToAll(board -> board.updateLinesPeriodically(0, 20));
 
 pager.show(player);
@@ -247,17 +247,17 @@ pager.show(player);
 </details>
 
 <details>
-<summary><b>С MiniPlaceholders</b></summary>
+<summary><b>With MiniPlaceholders</b></summary>
 
 ```java
 Board<String, Player> board = PacketBoard.newMiniplaceholdersSidebar(
-    "<gradient:#ff0000:#00ff00>Сервер</gradient>",
+    "<gradient:#ff0000:#00ff00>Server</gradient>",
     plugin,
     MiniMessage.miniMessage()
 );
 
-board.addTextLine("<gold>Игрок: <white><player_name>");
-board.addTextLine("<aqua>Баланс: <green>$<vault_eco_balance_fixed>");
+board.addTextLine("<gold>Player: <white><player_name>");
+board.addTextLine("<aqua>Balance: <green>$<vault_eco_balance_fixed>");
 board.addTextLine("<yellow>TPS: <server_tps>");
 
 board.addViewer(player);
@@ -266,15 +266,15 @@ board.addViewer(player);
 </details>
 
 <details>
-<summary><b>Динамический заголовок</b></summary>
+<summary><b>Dynamic Title</b></summary>
 
 ```java
 Board<String, GamePlayer> board = Board.<String, GamePlayer>builder()
     .title(gamePlayer -> {
         if (gamePlayer.isInCombat()) {
-            return "<red><bold>БОЙ!</bold></red>";
+            return "<red><bold>COMBAT!</bold></red>";
         }
-        return "<gradient:#ff0000:#00ff00>Мой сервер</gradient>";
+        return "<gradient:#ff0000:#00ff00>My Server</gradient>";
     })
     .plugin(plugin)
     .textProvider(new MiniMessageTextProvider(MiniMessage.miniMessage()))
@@ -287,73 +287,73 @@ Board<String, GamePlayer> board = Board.<String, GamePlayer>builder()
 ## 🎯 API Reference
 
 <details>
-<summary><b>PacketBoard (фабрика)</b></summary>
+<summary><b>PacketBoard (factory)</b></summary>
 
-Утилитный класс для быстрого создания скорбордов:
+Utility class for quick scoreboard creation:
 
-- `newMiniMessageSidebar()` — с поддержкой MiniMessage
-- `newMiniplaceholdersSidebar()` — с поддержкой MiniPlaceholders
-- `newAdventureSidebar()` — с Adventure Components
-- `newBungeeChatSidebar()` — с BungeeCord BaseComponent[]
-- `newSidebar()` — с кастомным TextProvider
+- `newMiniMessageSidebar()` — with MiniMessage support
+- `newMiniplaceholdersSidebar()` — with MiniPlaceholders support
+- `newAdventureSidebar()` — with Adventure Components
+- `newBungeeChatSidebar()` — with BungeeCord BaseComponent[]
+- `newSidebar()` — with custom TextProvider
 
 </details>
 
 <details>
 <summary><b>Board</b></summary>
 
-**Управление просмотрщиками:**
-- `addViewer(Player)` — добавить игрока
-- `removeViewer(Player)` — удалить игрока
-- `removeViewers()` — удалить всех игроков
-- `getViewers()` — получить список просмотрщиков
+**Viewer Management:**
+- `addViewer(Player)` — add player
+- `removeViewer(Player)` — remove player
+- `removeViewers()` — remove all players
+- `getViewers()` — get viewer list
 
-**Управление линиями:**
-- `addTextLine(String)` — статичная линия
-- `addUpdatableLine(Function)` — динамическая линия
-- `addConditionalLine(Function, Predicate)` — условная линия
-- `addBlankLine()` — пустая линия
-- `removeLine(BoardLine)` — удалить линию
-- `updateLine(BoardLine)` — обновить линию
-- `updateAllLines()` — обновить все линии
-- `shiftLine(BoardLine, offset)` — переместить линию
+**Line Management:**
+- `addTextLine(String)` — static line
+- `addUpdatableLine(Function)` — dynamic line
+- `addConditionalLine(Function, Predicate)` — conditional line
+- `addBlankLine()` — blank line
+- `removeLine(BoardLine)` — remove line
+- `updateLine(BoardLine)` — update line
+- `updateAllLines()` — update all lines
+- `shiftLine(BoardLine, offset)` — move line
 
-**Управление заголовком:**
-- `setTitle(R)` — статичный заголовок
-- `setTitle(TextIterator)` — анимированный заголовок
-- `setTitle(Function)` — динамический заголовок
+**Title Management:**
+- `setTitle(R)` — static title
+- `setTitle(TextIterator)` — animated title
+- `setTitle(Function)` — dynamic title
 
-**Обновление:**
-- `updateLinesPeriodically(delay, period)` — периодическое обновление
-- `bindWrappedTask(WrappedTask)` — привязать задачу к жизненному циклу
+**Updates:**
+- `updateLinesPeriodically(delay, period)` — periodic updates
+- `bindWrappedTask(WrappedTask)` — bind task to lifecycle
 
-**Очистка:**
-- `destroy()` — полная очистка и освобождение ресурсов
+**Cleanup:**
+- `destroy()` — full cleanup and resource release
 
 </details>
 
 <details>
 <summary><b>SidebarPager</b></summary>
 
-- `show(Player)` — показать pager игроку
-- `hide(Player)` — скрыть pager от игрока
-- `switchPage()` — переключить на следующую страницу вручную
-- `addPageLine(PageConsumer)` — добавить индикатор страниц
-- `applyToAll(Consumer)` — применить действие ко всем скорбордам
-- `destroy()` — очистить все скорборды
+- `show(Player)` — show pager to player
+- `hide(Player)` — hide pager from player
+- `switchPage()` — manually switch to next page
+- `addPageLine(PageConsumer)` — add page indicator
+- `applyToAll(Consumer)` — apply action to all scoreboards
+- `destroy()` — cleanup all scoreboards
 
 </details>
 
-## 🔧 Поддерживаемые версии
+## 🔧 Supported Versions
 
 - ✅ Bukkit/Spigot/Paper: **1.12.2 - 1.21.9**
-- ✅ Folia/Adventure: полная поддержка
+- ✅ Folia/Adventure: full support
 - ✅ Java: **17+**
 
-## 📝 Лицензия
+## 📝 License
 
 **MIT License**
 
-## 🤝 Поддержка
+## 🤝 Support
 
-Нашли баг или есть предложение? Создайте Issue!
+Found a bug or have a suggestion? Create an Issue!
