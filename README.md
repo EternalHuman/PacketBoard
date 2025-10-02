@@ -25,6 +25,10 @@
     <repository>
         <id>jitpack.io</id>
         <url>https://jitpack.io</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
     </repository>
 </repositories>
 
@@ -48,7 +52,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.EternalHuman:PacketBoard:master-SNAPSHOT'
+     implementation('com.github.EternalHuman:PacketBoard:master-SNAPSHOT') {
+        changing = true
+    }
 }
 ```
 
@@ -63,7 +69,9 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.EternalHuman:PacketBoard:master-SNAPSHOT")
+    implementation("com.github.EternalHuman:PacketBoard:master-SNAPSHOT") {
+        isChanging = true
+    }
 }
 ```
 
