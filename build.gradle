@@ -19,7 +19,7 @@ targetCompatibility = JavaVersion.VERSION_17
 
 def adventureVersion = '4.16.0'
 def paperVersion = '1.20.1-R0.1-SNAPSHOT'
-def viaVersionVersion = '5.0.0'
+def viaVersionVersion = '5.5.0'
 def viaNBTVersion = '5.0.2'
 def miniPlaceholdersVersion = '2.2.3'
 def lombokVersion = '1.18.30'
@@ -57,7 +57,7 @@ allprojects {
         compileOnly "org.projectlombok:lombok:${lombokVersion}"
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
-        compileOnly "com.viaversion:viaversion-common:${viaVersionVersion}"
+        compileOnly "com.viaversion:viaversion-api:${viaVersionVersion}"
         compileOnly "com.viaversion:viaversion-bukkit:${viaVersionVersion}"
 
         compileOnly 'io.netty:netty-buffer:4.1.101.Final'
