@@ -82,7 +82,7 @@ dependencies {
 ### Basic Example
 
 ```java
-Board<String, Player> board = PacketBoard.newMiniMessageSidebar(
+Board<String, Player> board = PacketBoard.newMiniMessagePacketBoard(
     "<gradient:#ff0000:#00ff00>My Server</gradient>",
     plugin
 );
@@ -147,7 +147,7 @@ TextIterator titleAnimation = new TextSlideAnimation(
     2
 );
 
-Board<String, Player> board = PacketBoard.newMiniMessageSidebar(
+Board<String, Player> board = PacketBoard.newMiniMessagePacketBoard(
     titleAnimation,
     plugin
 );
@@ -183,7 +183,7 @@ BoardLine<String, Player> line = board.addUpdatableLine(player -> {
 <summary><b>Dynamic Line Management</b></summary>
 
 ```java
-Board<String, Player> board = PacketBoard.newMiniMessageSidebar(
+Board<String, Player> board = PacketBoard.newMiniMessagePacketBoard(
     "<gradient:#ff0000:#00ff00>PvP Arena</gradient>",
     plugin
 );
@@ -209,17 +209,17 @@ board.shiftLine(streakLine, 0); // move to beginning
 </details>
 
 <details>
-<summary><b>SidebarPager - Switching Scoreboards</b></summary>
+<summary><b>BoardPager - Switching Scoreboards</b></summary>
 
 ```java
-Board<String, Player> infoBoard = PacketBoard.newMiniMessageSidebar(
+Board<String, Player> infoBoard = PacketBoard.newMiniMessagePacketBoard(
     "<aqua>Information</aqua>",
     plugin
 );
 infoBoard.addTextLine("<gold>Mode: SkyWars");
 infoBoard.addTextLine("<gray>Map: Islands");
 
-Board<String, Player> statsBoard = PacketBoard.newMiniMessageSidebar(
+Board<String, Player> statsBoard = PacketBoard.newMiniMessagePacketBoard(
     "<green>Statistics</green>",
     plugin
 );
@@ -227,7 +227,7 @@ statsBoard.addUpdatableLine(p -> "<white>Kills: " + getKills(p));
 statsBoard.addUpdatableLine(p -> "<white>Deaths: " + getDeaths(p));
 
 // Create pager with auto-switch every 5 seconds (100 ticks)
-SidebarPager<String, Player> pager = new SidebarPager<>(
+BoardPager<String, Player> pager = new BoardPager<>(
     Arrays.asList(infoBoard, statsBoard),
     100, // 5 seconds
     plugin
@@ -250,7 +250,7 @@ pager.show(player);
 <summary><b>With MiniPlaceholders</b></summary>
 
 ```java
-Board<String, Player> board = PacketBoard.newMiniplaceholdersSidebar(
+Board<String, Player> board = PacketBoard.newMiniplaceholdersPacketBoard(
     "<gradient:#ff0000:#00ff00>Server</gradient>",
     plugin,
     MiniMessage.miniMessage()
@@ -291,11 +291,11 @@ Board<String, GamePlayer> board = Board.<String, GamePlayer>builder()
 
 Utility class for quick scoreboard creation:
 
-- `newMiniMessageSidebar()` — with MiniMessage support
-- `newMiniplaceholdersSidebar()` — with MiniPlaceholders support
-- `newAdventureSidebar()` — with Adventure Components
-- `newBungeeChatSidebar()` — with BungeeCord BaseComponent[]
-- `newSidebar()` — with custom TextProvider
+- `newMiniMessagePacketBoard()` — with MiniMessage support
+- `newMiniplaceholdersPacketBoard()` — with MiniPlaceholders support
+- `newAdventurePacketBoard()` — with Adventure Components
+- `newBungeeChatPacketBoard()` — with BungeeCord BaseComponent[]
+- `newPacketBoard()` — with custom TextProvider
 
 </details>
 
@@ -333,7 +333,7 @@ Utility class for quick scoreboard creation:
 </details>
 
 <details>
-<summary><b>SidebarPager</b></summary>
+<summary><b>BoardPager</b></summary>
 
 - `show(Player)` — show pager to player
 - `hide(Player)` — hide pager from player
