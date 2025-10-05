@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Simple text animation with 3 colors.
- * Just like on Hypixel server sidebars title.
+ * Just like on Hypixel server scoreboard's title.
  * 
  * @author CatCoder
  */

@@ -20,7 +20,7 @@ import static me.eternalhuman.packetboard.BoardLine.sendPacket;
 @Getter
 public class ScoreboardObjective<R> {
 
-    public static final int DISPLAY_SIDEBAR = 1;
+    public static final int DISPLAY_SCOREBOARD = 1;
     public static final int ADD_OBJECTIVE = 0;
     public static final int REMOVE_OBJECTIVE = 1;
     public static final int UPDATE_VALUE = 2;
@@ -95,7 +95,7 @@ public class ScoreboardObjective<R> {
 
         output.writeVarInt(PacketIds.DISPLAY_OBJECTIVES.getServerPacketId());
 
-        output.writeByte(DISPLAY_SIDEBAR);
+        output.writeByte(DISPLAY_SCOREBOARD);
         output.writeString(name);
 
         sendPacket(player, buf);

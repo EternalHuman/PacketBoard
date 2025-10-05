@@ -22,7 +22,7 @@ public class PacketBoard {
         return Board.builder();
     }
 
-    public <R, P> Board<R, P> newSidebar(
+    public <R, P> Board<R, P> newPacketBoard(
             @NonNull R title,
             @NonNull Plugin plugin,
             @NonNull TextProvider<R> textProvider,
@@ -36,7 +36,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <R> Board<R, Player> newSidebar(
+    public <R> Board<R, Player> newPacketBoard(
             @NonNull R title,
             @NonNull Plugin plugin,
             @NonNull TextProvider<R> textProvider
@@ -48,7 +48,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <R, P> Board<R, P> newSidebar(
+    public <R, P> Board<R, P> newPacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull TextProvider<R> textProvider,
@@ -62,7 +62,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <R> Board<R, Player> newSidebar(
+    public <R> Board<R, Player> newPacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull TextProvider<R> textProvider
@@ -74,7 +74,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<String, P> newMiniMessageSidebar(
+    public <P> Board<String, P> newMinimessagePacketBoard(
             @NonNull String title,
             @NonNull Plugin plugin,
             @NonNull MiniMessage miniMessage,
@@ -88,7 +88,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<String, Player> newMiniMessageSidebar(
+    public Board<String, Player> newMinimessagePacketBoard(
             @NonNull String title,
             @NonNull Plugin plugin,
             @NonNull MiniMessage miniMessage
@@ -100,7 +100,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<String, P> newMiniplaceholdersSidebar(
+    public <P> Board<String, P> newMiniplaceholdersPacketBoard(
             @NonNull String title,
             @NonNull Plugin plugin,
             @NonNull MiniMessage miniMessage,
@@ -114,7 +114,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<String, Player> newMiniplaceholdersSidebar(
+    public Board<String, Player> newMiniplaceholdersPacketBoard(
             @NonNull String title,
             @NonNull Plugin plugin,
             @NonNull MiniMessage miniMessage
@@ -126,7 +126,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<String, P> newMiniplaceholdersSidebar(
+    public <P> Board<String, P> newMiniplaceholdersPacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull MiniMessage miniMessage,
@@ -140,7 +140,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<String, Player> newMiniplaceholdersSidebar(
+    public Board<String, Player> newMiniplaceholdersPacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull MiniMessage miniMessage
@@ -152,7 +152,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<String, P> newMiniMessageSidebar(
+    public <P> Board<String, P> newMinimessagePacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull MiniMessage miniMessage,
@@ -166,7 +166,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<String, Player> newMiniMessageSidebar(
+    public Board<String, Player> newMinimessagePacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull MiniMessage miniMessage
@@ -178,7 +178,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<String, P> newMiniMessageSidebar(
+    public <P> Board<String, P> newMinimessagePacketBoard(
             @NonNull String title,
             @NonNull Plugin plugin,
             @NonNull ThrowingFunction<Player, P, Throwable> playerFunction
@@ -191,7 +191,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<String, Player> newMiniMessageSidebar(
+    public Board<String, Player> newMinimessagePacketBoard(
             @NonNull String title,
             @NonNull Plugin plugin
     ) {
@@ -202,7 +202,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<String, P> newMiniMessageSidebar(
+    public <P> Board<String, P> newMinimessagePacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull ThrowingFunction<Player, P, Throwable> playerFunction
@@ -215,7 +215,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<String, Player> newMiniMessageSidebar(
+    public Board<String, Player> newMinimessagePacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin
     ) {
@@ -226,7 +226,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<Component, P> newAdventureSidebar(
+    public <P> Board<Component, P> newAdventurePacketBoard(
             @NonNull Component title,
             @NonNull Plugin plugin,
             @NonNull ThrowingFunction<Player, P, Throwable> playerFunction
@@ -239,7 +239,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<Component, Player> newAdventureSidebar(
+    public Board<Component, Player> newAdventurePacketBoard(
             @NonNull Component title,
             @NonNull Plugin plugin
     ) {
@@ -250,7 +250,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<Component, P> newAdventureSidebar(
+    public <P> Board<Component, P> newAdventurePacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull ThrowingFunction<Player, P, Throwable> playerFunction
@@ -263,7 +263,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<Component, Player> newAdventureSidebar(
+    public Board<Component, Player> newAdventurePacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin
     ) {
@@ -274,7 +274,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<BaseComponent[], P> newBungeeChatSidebar(
+    public <P> Board<BaseComponent[], P> newBungeeChatPacketBoard(
             @NonNull BaseComponent[] title,
             @NonNull Plugin plugin,
             @NonNull ThrowingFunction<Player, P, Throwable> playerFunction
@@ -287,7 +287,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<BaseComponent[], Player> newBungeeChatSidebar(
+    public Board<BaseComponent[], Player> newBungeeChatPacketBoard(
             @NonNull BaseComponent[] title,
             @NonNull Plugin plugin
     ) {
@@ -298,7 +298,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public <P> Board<BaseComponent[], P> newBungeeChatSidebar(
+    public <P> Board<BaseComponent[], P> newBungeeChatPacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin,
             @NonNull ThrowingFunction<Player, P, Throwable> playerFunction
@@ -311,7 +311,7 @@ public class PacketBoard {
                 .build();
     }
 
-    public Board<BaseComponent[], Player> newBungeeChatSidebar(
+    public Board<BaseComponent[], Player> newBungeeChatPacketBoard(
             @NonNull TextIterator title,
             @NonNull Plugin plugin
     ) {

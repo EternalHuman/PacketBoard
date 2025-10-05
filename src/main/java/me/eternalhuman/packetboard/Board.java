@@ -13,7 +13,6 @@ import me.eternalhuman.packetboard.util.lang.ThrowingConsumer;
 import me.eternalhuman.packetboard.util.lang.ThrowingFunction;
 import me.eternalhuman.packetboard.util.lang.ThrowingPredicate;
 import me.eternalhuman.packetboard.util.lang.ThrowingSupplier;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -189,7 +188,7 @@ public class Board<R, P> {
                                     @NonNull ThrowingPredicate<P, Throwable> predicate) {
         synchronized (lines) {
             Preconditions.checkArgument(
-                    lines.size() <= MAX_LINES_COUNT, "Cannot add more than %s lines to a sidebar", MAX_LINES_COUNT);
+                    lines.size() <= MAX_LINES_COUNT, "Cannot add more than %s lines to a packetboard", MAX_LINES_COUNT);
 
             BoardLine<R, P> line = new BoardLine<>(
                     updater, objective.getName() + lines.size(),
@@ -227,7 +226,7 @@ public class Board<R, P> {
 
     public void updateLine(@NonNull BoardLine<R, P> line) {
         synchronized (lines) {
-            Preconditions.checkArgument(lines.contains(line), "Line %s is not a part of this sidebar", line);
+            Preconditions.checkArgument(lines.contains(line), "Line %s is not a part of this packetboard", line);
 
             broadcastWithConversion((bukkitPlayer, customPlayer) ->
                     line.updateTeam(bukkitPlayer, customPlayer, objective.getName()));
@@ -354,7 +353,7 @@ public class Board<R, P> {
                 try {
                     consumer.accept(player);
                 } catch (Throwable e) {
-                    throw new RuntimeException("An error occurred while updating sidebar for player: " + player.getName(),
+                    throw new RuntimeException("An error occurred while updating packetboard for player: " + player.getName(),
                             e);
                 }
             }
@@ -375,7 +374,7 @@ public class Board<R, P> {
                     P customPlayer = convertPlayer(bukkitPlayer);
                     consumer.accept(bukkitPlayer, customPlayer);
                 } catch (Throwable e) {
-                    throw new RuntimeException("An error occurred while updating sidebar for player: " + bukkitPlayer.getName(),
+                    throw new RuntimeException("An error occurred while updating packetboard for player: " + bukkitPlayer.getName(),
                             e);
                 }
             }

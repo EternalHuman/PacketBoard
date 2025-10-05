@@ -47,7 +47,7 @@ public class TextIterators {
     }
 
     /**
-     * Creates new text fade animation. Just like on Hypixel server sidebars title.
+     * Creates new text fade animation. Just like on Hypixel server boards title.
      *
      * @param text - text to fade
      * @return new text fade animation

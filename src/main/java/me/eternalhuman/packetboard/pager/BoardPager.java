@@ -12,7 +12,7 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class SidebarPager<R, P> {
+public class BoardPager<R, P> {
 
     private final List<Board<R, P>> boards;
     private final Iterator<Board<R, P>> pageIterator;
@@ -22,13 +22,13 @@ public class SidebarPager<R, P> {
     private Board<R, P> currentPage;
 
     /**
-     * Creates a new sidebar pager.
+     * Creates a new board pager.
      *
-     * @param boards         - list of sidebars to use
+     * @param boards         - list of boards to use
      * @param switchDelayTicks - delay between page switches in ticks (if value is 0, pages will not be switched automatically)
      * @param plugin           - plugin instance
      */
-    public SidebarPager(@NonNull List<Board<R, P>> boards, long switchDelayTicks, @NonNull Plugin plugin) {
+    public BoardPager(@NonNull List<Board<R, P>> boards, long switchDelayTicks, @NonNull Plugin plugin) {
         this.boards = boards;
         this.viewers = new HashSet<>();
         this.pageIterator = Iterators.cycle(boards);
@@ -66,12 +66,12 @@ public class SidebarPager<R, P> {
         return Collections.unmodifiableSet(viewers);
     }
 
-    public List<Board<R, P>> getSidebars() {
+    public List<Board<R, P>> getBoards() {
         return Collections.unmodifiableList(boards);
     }
 
     /**
-     * Adds a page status line to all sidebars in pager.
+     * Adds a page status line to all boards in pager.
      */
     public void addPageLine(PageConsumer<R, P> consumer) {
         int page = 1;
@@ -84,7 +84,7 @@ public class SidebarPager<R, P> {
     }
 
     /**
-     * Destroy all sidebars in pager.
+     * Destroy all boards in pager.
      * Note: pager object will be unusable after this method call.
      */
     public void destroy() {
@@ -99,9 +99,9 @@ public class SidebarPager<R, P> {
     }
 
     /**
-     * Start showing all sidebars in pager to the player.
+     * Start showing all boards in pager to the player.
      *
-     * @param player - player to show sidebars to
+     * @param player - player to show boards to
      */
     public void show(@NonNull Player player) {
         synchronized (viewers) {
@@ -111,9 +111,9 @@ public class SidebarPager<R, P> {
     }
 
     /**
-     * Stop showing all sidebars in pager to the player.
+     * Stop showing all boards in pager to the player.
      *
-     * @param player - player to stop showing sidebars to
+     * @param player - player to stop showing boards to
      */
     public void hide(@NonNull Player player) {
         synchronized (viewers) {
