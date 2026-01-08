@@ -1,6 +1,6 @@
 # PacketBoard
 
-A modern library for creating scoreboards in Minecraft using packets with support for all versions from 1.12.2 to 1.21.9.
+A modern library for creating scoreboards in Minecraft using packets with support for all versions from 1.12.2 to 1.21.11.
 
 ## ✨ Advantages
 
