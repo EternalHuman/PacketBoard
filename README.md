@@ -4,7 +4,7 @@ A modern library for creating scoreboards in Minecraft using packets with suppor
 
 ## ✨ Advantages
 
-- **🔄 Full version compatibility** — works on 1.12.2 - 1.21.9 without additional configuration
+- **🔄 Full version compatibility** — works on 1.12.2 - 1.21.11 without additional configuration
 - **📦 Packet-based approach** — uses packets directly, without version compatibility issues
 - **☕ Java 17** — minimal requirements allow using the library on any server version
 - **⚡ Folia support** — full compatibility with multi-threaded server
