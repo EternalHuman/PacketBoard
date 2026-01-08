@@ -7,6 +7,22 @@ import static me.eternalhuman.packetboard.protocol.ProtocolConstants.map;
 
 public enum PacketIds {
 
+    UPDATE_OBJECTIVES( //Update Objectives packet
+            map(ProtocolConstants.MINECRAFT_1_12_2, 0x42),
+            map(ProtocolConstants.MINECRAFT_1_13, 0x45),
+            map(ProtocolConstants.MINECRAFT_1_14, 0x49),
+            map(ProtocolConstants.MINECRAFT_1_15, 0x4A),
+            map(ProtocolConstants.MINECRAFT_1_17, 0x53),
+            map(ProtocolConstants.MINECRAFT_1_19_1, 0x56),
+            map(ProtocolConstants.MINECRAFT_1_19_3, 0x54),
+            map(ProtocolConstants.MINECRAFT_1_19_4, 0x58),
+            map(ProtocolConstants.MINECRAFT_1_20_2, 0x5A),
+            map(ProtocolConstants.MINECRAFT_1_20_4, 0x5C),
+            map(ProtocolConstants.MINECRAFT_1_20_6, 0x5E),
+            map(ProtocolConstants.MINECRAFT_1_21_2, 0x64),
+            map(ProtocolConstants.MINECRAFT_1_21_5, 0x63),
+            map(ProtocolConstants.MINECRAFT_1_21_9, 0x68)
+    ),
     UPDATE_TEAMS( //Update Teams packet
             map(ProtocolConstants.MINECRAFT_1_12_2, 0x44),
             map(ProtocolConstants.MINECRAFT_1_13, 0x47),
@@ -18,10 +34,10 @@ public enum PacketIds {
             map(ProtocolConstants.MINECRAFT_1_19_4, 0x5A),
             map(ProtocolConstants.MINECRAFT_1_20_2, 0x5C),
             map(ProtocolConstants.MINECRAFT_1_20_4, 0x5E),
-            map(ProtocolConstants.MINECRAFT_1_20_4, 0x5E),
             map(ProtocolConstants.MINECRAFT_1_20_6, 0x60),
             map(ProtocolConstants.MINECRAFT_1_21_2, 0x67),
-            map(ProtocolConstants.MINECRAFT_1_21_5, 0x66)
+            map(ProtocolConstants.MINECRAFT_1_21_5, 0x66),
+            map(ProtocolConstants.MINECRAFT_1_21_9, 0x6B)
     ),
     UPDATE_SCORE( //Update Score packet
             map(ProtocolConstants.MINECRAFT_1_12_2, 0x45),
@@ -36,13 +52,15 @@ public enum PacketIds {
             map(ProtocolConstants.MINECRAFT_1_20_4, 0x5F),
             map(ProtocolConstants.MINECRAFT_1_20_6, 0x61),
             map(ProtocolConstants.MINECRAFT_1_21_2, 0x68),
-            map(ProtocolConstants.MINECRAFT_1_21_5, 0x67)
+            map(ProtocolConstants.MINECRAFT_1_21_5, 0x67),
+            map(ProtocolConstants.MINECRAFT_1_21_9, 0x6C)
     ),
     RESET_SCORE( //Reset Score packet
             map(ProtocolConstants.MINECRAFT_1_20_3, 0x42),
             map(ProtocolConstants.MINECRAFT_1_20_4, 0x44),
             map(ProtocolConstants.MINECRAFT_1_21_2, 0x49),
-            map(ProtocolConstants.MINECRAFT_1_21_5, 0x48)
+            map(ProtocolConstants.MINECRAFT_1_21_5, 0x48),
+            map(ProtocolConstants.MINECRAFT_1_21_9, 0x4D)
     ),
     DISPLAY_OBJECTIVES( //Display Objective packet
             map(ProtocolConstants.MINECRAFT_1_12_2, 0x3B),
@@ -57,22 +75,8 @@ public enum PacketIds {
             map(ProtocolConstants.MINECRAFT_1_20_4, 0x55),
             map(ProtocolConstants.MINECRAFT_1_20_6, 0x57),
             map(ProtocolConstants.MINECRAFT_1_21_2, 0x5C),
-            map(ProtocolConstants.MINECRAFT_1_21_5, 0x5B)
-    ),
-    UPDATE_OBJECTIVES( //Update Objectives packet
-            map(ProtocolConstants.MINECRAFT_1_12_2, 0x42),
-            map(ProtocolConstants.MINECRAFT_1_13, 0x45),
-            map(ProtocolConstants.MINECRAFT_1_14, 0x49),
-            map(ProtocolConstants.MINECRAFT_1_15, 0x4A),
-            map(ProtocolConstants.MINECRAFT_1_17, 0x53),
-            map(ProtocolConstants.MINECRAFT_1_19_1, 0x56),
-            map(ProtocolConstants.MINECRAFT_1_19_3, 0x54),
-            map(ProtocolConstants.MINECRAFT_1_19_4, 0x58),
-            map(ProtocolConstants.MINECRAFT_1_20_2, 0x5A),
-            map(ProtocolConstants.MINECRAFT_1_20_4, 0x5C),
-            map(ProtocolConstants.MINECRAFT_1_20_6, 0x5E),
-            map(ProtocolConstants.MINECRAFT_1_21_2, 0x64),
-            map(ProtocolConstants.MINECRAFT_1_21_5, 0x63)
+            map(ProtocolConstants.MINECRAFT_1_21_5, 0x5B),
+            map(ProtocolConstants.MINECRAFT_1_21_9, 0x60)
     );
 
     private final ProtocolConstants.ProtocolMapping[] mappings;

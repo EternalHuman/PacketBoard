@@ -63,11 +63,13 @@ public class ProtocolConstants {
     public static final int MINECRAFT_1_21_7 = 772;
     public static final int MINECRAFT_1_21_8 = 772;
 
-    // Note: Protocol version for 1.21.9 is tentative (released Sept 30, 2025)
     public static final int MINECRAFT_1_21_9 = 773;
+    public static final int MINECRAFT_1_21_10 = 773;
+
+    public static final int MINECRAFT_1_21_11 = 774;
 
     public static final int MINIMUM_SUPPORTED_VERSION = MINECRAFT_1_12_2;
-    public static final int MAXIMUM_SUPPORTED_VERSION = MINECRAFT_1_21_9;
+    public static final int MAXIMUM_SUPPORTED_VERSION = MINECRAFT_1_21_11;
 
     @Getter
     @RequiredArgsConstructor
