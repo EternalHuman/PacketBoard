@@ -12,6 +12,18 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifactId = 'PacketBoard'
+        }
+    }
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -68,10 +80,6 @@ allprojects {
         compileOnly "net.kyori:adventure-text-serializer-gson:${adventureVersion}"
         compileOnly "net.kyori:adventure-text-serializer-legacy:${adventureVersion}"
     }
-}
-
-task javadocJar(type: Jar) {
-    archiveClassifier = 'javadoc'
 }
 
 tasks.withType(JavaCompile) {

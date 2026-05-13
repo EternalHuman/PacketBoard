@@ -46,24 +46,18 @@ public final class MinecraftVersion implements Comparable<MinecraftVersion>, Ser
     /**
      * -- GETTER --
      *  Major version number
-     *
-     * @return Current major version number.
      */
     @Getter
     private final int major;
     /**
      * -- GETTER --
      *  Minor version number
-     *
-     * @return Current minor version number.
      */
     @Getter
     private final int minor;
     /**
      * -- GETTER --
      *  Build version number
-     *
-     * @return Current build version number.
      */
     @Getter
     private final int build;
