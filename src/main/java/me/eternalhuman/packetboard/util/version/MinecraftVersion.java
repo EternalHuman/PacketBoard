@@ -17,11 +17,11 @@
 
 package me.eternalhuman.packetboard.util.version;
 
-import com.google.common.collect.ComparisonChain;
-import com.google.common.collect.Ordering;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,8 +43,29 @@ public final class MinecraftVersion implements Comparable<MinecraftVersion>, Ser
      */
     private static MinecraftVersion currentVersion;
 
+    /**
+     * -- GETTER --
+     *  Major version number
+     *
+     * @return Current major version number.
+     */
+    @Getter
     private final int major;
+    /**
+     * -- GETTER --
+     *  Minor version number
+     *
+     * @return Current minor version number.
+     */
+    @Getter
     private final int minor;
+    /**
+     * -- GETTER --
+     *  Build version number
+     *
+     * @return Current build version number.
+     */
+    @Getter
     private final int build;
     // The development stage
     private final String development;
@@ -150,33 +171,6 @@ public final class MinecraftVersion implements Comparable<MinecraftVersion>, Ser
     }
 
     /**
-     * Major version number
-     *
-     * @return Current major version number.
-     */
-    public int getMajor() {
-        return this.major;
-    }
-
-    /**
-     * Minor version number
-     *
-     * @return Current minor version number.
-     */
-    public int getMinor() {
-        return this.minor;
-    }
-
-    /**
-     * Build version number
-     *
-     * @return Current build version number.
-     */
-    public int getBuild() {
-        return this.build;
-    }
-
-    /**
      * Retrieve the development stage.
      *
      * @return Development stage, or NULL if this is a release.
@@ -218,12 +212,23 @@ public final class MinecraftVersion implements Comparable<MinecraftVersion>, Ser
             return 1;
         }
 
-        return ComparisonChain.start()
-                .compare(this.getMajor(), o.getMajor())
-                .compare(this.getMinor(), o.getMinor())
-                .compare(this.getBuild(), o.getBuild())
-                .compare(this.getDevelopmentStage(), o.getDevelopmentStage(), Ordering.natural().nullsLast())
-                .result();
+        int majorComparison = Integer.compare(this.getMajor(), o.getMajor());
+        if (majorComparison != 0) {
+            return majorComparison;
+        }
+
+        int minorComparison = Integer.compare(this.getMinor(), o.getMinor());
+        if (minorComparison != 0) {
+            return minorComparison;
+        }
+
+        int buildComparison = Integer.compare(this.getBuild(), o.getBuild());
+        if (buildComparison != 0) {
+            return buildComparison;
+        }
+
+        return Comparator.nullsLast(String::compareTo)
+                .compare(this.getDevelopmentStage(), o.getDevelopmentStage());
     }
 
     public boolean isAtLeast(MinecraftVersion other) {
