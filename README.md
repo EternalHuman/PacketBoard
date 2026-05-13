@@ -17,11 +17,23 @@ A modern library for creating scoreboards in Minecraft using packets with suppor
 
 ## 📦 Installation
 
+> `tcoded-repo` and `viaversion-repo` are required for FoliaLib and ViaVersion NBT dependencies.
+
 <details>
 <summary><b>Maven</b></summary>
 
 ```xml
 <repositories>
+    <repository>
+        <id>tcoded-repo</id>
+        <name>tcoded-repo</name>
+        <url>https://repo.tcoded.com/releases</url>
+    </repository>
+    <repository>
+        <id>viaversion-repo</id>
+        <name>viaversion-repo</name>
+        <url>https://repo.viaversion.com</url>
+    </repository>
     <repository>
         <id>jitpack.io</id>
         <url>https://jitpack.io</url>
@@ -48,6 +60,14 @@ A modern library for creating scoreboards in Minecraft using packets with suppor
 
 ```groovy
 repositories {
+    maven {
+        name = 'tcoded-repo'
+        url = uri('https://repo.tcoded.com/releases')
+    }
+    maven {
+        name = 'viaversion-repo'
+        url = uri('https://repo.viaversion.com')
+    }
     maven { url 'https://jitpack.io' }
 }
 
@@ -65,6 +85,14 @@ dependencies {
 
 ```kotlin
 repositories {
+    maven {
+        name = "tcoded-repo"
+        url = uri("https://repo.tcoded.com/releases")
+    }
+    maven {
+        name = "viaversion-repo"
+        url = uri("https://repo.viaversion.com")
+    }
     maven("https://jitpack.io")
 }
 
