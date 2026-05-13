@@ -1,6 +1,5 @@
 package me.eternalhuman.packetboard.text.provider;
 
-import io.github.miniplaceholders.api.MiniPlaceholders;
 import lombok.NonNull;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
