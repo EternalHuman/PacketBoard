@@ -134,9 +134,17 @@ public class ScoreboardPackets {
         if (clientVersion >= ProtocolConstants.MINECRAFT_1_13) {
 
             if (serverVersion >= ProtocolConstants.MINECRAFT_1_20_3) {
-                writeDefaults(serverVersion, packet);
-                packet.writeComponent(provider.asJsonMessage(player, text));
-                packet.writeComponent("{\"text\":\"\"}");
+                String prefix = provider.asJsonMessage(player, text);
+
+                if (serverVersion >= ProtocolConstants.MINECRAFT_26_2) {
+                    packet.writeComponent(prefix);
+                    packet.writeComponent("{\"text\":\"\"}");
+                    writeDefaults26_2(packet);
+                } else {
+                    writeDefaults(serverVersion, packet);
+                    packet.writeComponent(prefix);
+                    packet.writeComponent("{\"text\":\"\"}");
+                }
 
             } else if (serverVersion >= ProtocolConstants.MINECRAFT_1_13) {
                 writeDefaults(serverVersion, packet);
@@ -220,5 +228,11 @@ public class ScoreboardPackets {
         }
     }
 
+    private static void writeDefaults26_2(@NonNull NetOutput packet) {
+        packet.writeVarInt(0); // name tag visibility
+        packet.writeVarInt(0); // collision rule
+        packet.writeBoolean(false); // no team color
+        packet.writeByte(10); // friendly tags
+    }
 
 }

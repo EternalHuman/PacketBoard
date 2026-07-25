@@ -36,6 +36,12 @@ public class PacketIdsTest {
         assertEquals(0x6E, PacketIds.UPDATE_SCORE.getPacketId(ProtocolConstants.MINECRAFT_26_1_2));
         assertEquals(0x4F, PacketIds.RESET_SCORE.getPacketId(ProtocolConstants.MINECRAFT_26_1_2));
         assertEquals(0x62, PacketIds.DISPLAY_OBJECTIVES.getPacketId(ProtocolConstants.MINECRAFT_26_1_2));
+
+        assertEquals(0x6A, PacketIds.UPDATE_OBJECTIVES.getPacketId(ProtocolConstants.MINECRAFT_26_2));
+        assertEquals(0x6D, PacketIds.UPDATE_TEAMS.getPacketId(ProtocolConstants.MINECRAFT_26_2));
+        assertEquals(0x6E, PacketIds.UPDATE_SCORE.getPacketId(ProtocolConstants.MINECRAFT_26_2));
+        assertEquals(0x4F, PacketIds.RESET_SCORE.getPacketId(ProtocolConstants.MINECRAFT_26_2));
+        assertEquals(0x62, PacketIds.DISPLAY_OBJECTIVES.getPacketId(ProtocolConstants.MINECRAFT_26_2));
     }
 
     @Test
@@ -43,6 +49,7 @@ public class PacketIdsTest {
         assertEquals(775, MinecraftProtocolVersion.getVersion(new MinecraftVersion(26, 1, 0)));
         assertEquals(775, MinecraftProtocolVersion.getVersion(new MinecraftVersion(26, 1, 1)));
         assertEquals(775, MinecraftProtocolVersion.getVersion(new MinecraftVersion(26, 1, 2)));
+        assertEquals(776, MinecraftProtocolVersion.getVersion(new MinecraftVersion(26, 2, 0)));
     }
 
     @Test(expected = IllegalArgumentException.class)

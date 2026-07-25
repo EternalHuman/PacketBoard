@@ -1,10 +1,10 @@
 # PacketBoard
 
-A modern library for creating scoreboards in Minecraft using packets with support for all versions from 1.12.2 to 26.1.2.
+A modern library for creating scoreboards in Minecraft using packets with support for all versions from 1.12.2 to 26.2.
 
 ## ✨ Advantages
 
-- **🔄 Full version compatibility** — works on 1.12.2 - 26.1.2 without additional configuration
+- **🔄 Full version compatibility** — works on 1.12.2 - 26.2 without additional configuration
 - **📦 Packet-based approach** — uses packets directly, without version compatibility issues
 - **☕ Java 17** — minimal requirements allow using the library on any server version
 - **⚡ Folia support** — full compatibility with multi-threaded server
@@ -374,7 +374,7 @@ Utility class for quick scoreboard creation:
 
 ## 🔧 Supported Versions
 
-- ✅ Bukkit/Spigot/Paper: **1.12.2 - 26.1.2**
+- ✅ Bukkit/Spigot/Paper: **1.12.2 - 26.2**
 - ✅ Folia/Adventure: full support
 - ✅ Java: **17+**
 
