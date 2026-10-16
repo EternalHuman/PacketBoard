@@ -50,6 +50,21 @@ public class PacketIdsTest {
         assertEquals(775, MinecraftProtocolVersion.getVersion(new MinecraftVersion(26, 1, 1)));
         assertEquals(775, MinecraftProtocolVersion.getVersion(new MinecraftVersion(26, 1, 2)));
         assertEquals(776, MinecraftProtocolVersion.getVersion(new MinecraftVersion(26, 2, 0)));
+        assertEquals(777, MinecraftProtocolVersion.getVersion(new MinecraftVersion(26, 3, 0)));
+    }
+
+    @Test
+    public void testMinecraft26_3ServerPacketIds() {
+        MinecraftVersion version = MinecraftVersion.fromServerVersion("Paper (MC: 26.3)");
+        assertEquals(new MinecraftVersion(26, 3, 0), version);
+
+        int protocol = MinecraftProtocolVersion.getVersion(version);
+        assertEquals(777, protocol);
+        assertEquals(0x6C, PacketIds.UPDATE_OBJECTIVES.getPacketId(protocol));
+        assertEquals(0x6F, PacketIds.UPDATE_TEAMS.getPacketId(protocol));
+        assertEquals(0x70, PacketIds.UPDATE_SCORE.getPacketId(protocol));
+        assertEquals(0x50, PacketIds.RESET_SCORE.getPacketId(protocol));
+        assertEquals(0x64, PacketIds.DISPLAY_OBJECTIVES.getPacketId(protocol));
     }
 
     @Test(expected = IllegalArgumentException.class)
